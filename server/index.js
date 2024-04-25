@@ -36,7 +36,7 @@ mongoose
 
 
 //POST Register
-app.post("/register", async (req, res) => {
+app.post("https://luckwatsa-app-server.vercel.app/register", async (req, res) => {
     try {
         //generate new password
         const salt = await bcrypt.genSalt(10);
@@ -58,7 +58,7 @@ app.post("/register", async (req, res) => {
 });
 
 //Get Registered Users
-app.get('/register', async(req,res)=>{
+app.get('https://luckwatsa-app-server.vercel.app/register', async(req,res)=>{
     try{
         const users = await User.find()
         res.status(200).json(users)
@@ -69,7 +69,7 @@ app.get('/register', async(req,res)=>{
 
 
 //Login
-app.post("/login", async (req, res) => {
+app.post("https://luckwatsa-app-server.vercel.app/login", async (req, res) => {
     try {
     // Find user
     const user = await User.findOne({ username: req.body.username });
