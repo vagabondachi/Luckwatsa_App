@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import googleLogo from '../../_shared/assets/logo/google.png';
 import facebookLogo from '../../_shared/assets/logo/fb.png';
-import { FaArrowLeft } from 'react-icons/fa'
+
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -48,7 +48,7 @@ export default function Login() {
     return (
         <div className="min-h-screen flex justify-center items-center">
             <div className="p-8 rounded-lg w-full max-w-[580px]">
-                <Link to="/welcome" className="absolute top-4 left-4 p-2 rounded-full bg-white shadow-md"><FaArrowLeft className="w-6 h-6 text-gray-600" /></Link>
+                <Link to="/welcome" className="absolute top-4 left-4 p-2 rounded-full bg-white shadow-md"><h1 className="w-6 h-6 text-gray-600">back</h1></Link>
                 <h1 className="text-3xl font-bold mb-4 text-center font-primary">Login</h1>
                 {error && <span>There was a problem logging you in</span>}
                 <form className="space-y-4" onSubmit={handleLogin}>

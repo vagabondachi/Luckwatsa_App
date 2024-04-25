@@ -3,7 +3,7 @@ import axios from 'axios';
 import HUD from '../components/HUD'
 import Map, { Marker, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { MdPlace } from 'react-icons/md';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { format } from 'timeago.js';
 
 export default function _Map() {
@@ -87,7 +87,7 @@ export default function _Map() {
                             latitude={treasure.lat} 
                             anchor="bottom" 
                         >
-                            <MdPlace 
+                            <FontAwesomeIcon icon={faLocationDot} 
                             className={`text-3xl sm:text-4xl lg:text-5xl ${treasure.username === currentUser ? 'text-accentPurple' : 'text-accentRed'} cursor-pointer`}
                             onClick={() => handleMarkerClick(treasure._id)}/>
                             <div>You are here</div>
