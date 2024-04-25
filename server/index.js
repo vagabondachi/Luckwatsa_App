@@ -71,28 +71,33 @@ app.get('/users', async(req,res)=>{
 //Login
 app.post("/login", async (req, res) => {
     try {
-    // Find user
-    const user = await User.findOne({ username: req.body.username });
-    
-    if (!user) {
-        // No user found with the given username
-        return res.status(400).json("Wrong credentials");
-    }
+        // Find user
+        const user = await User.findOne({ username: req.body.username });
 
-    // isate PassValidword
-    const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
+        if (!user) {
+            console.log("User not found with username:", req.body.username);
+            return res.status(400).json("Wrong credentials");
+        }
 
-    
-    if (!isPasswordValid) {
-        // Password doesn't match
-        return res.status(400).json("Wrong credentials");
-    }
-        const token = jwt.sign({userId: user._id}, process.env.SECRET_KEY, { expiresIn:'1hr' })
-        res.json({ message: 'Login successful' })
+        // Validate Password
+        const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
+
+        if (!isPasswordValid) {
+            console.log("Invalid password for user:", req.body.username);
+            return res.status(400).json("Wrong credentials");
+        }
+
+        // Generate JWT Token
+        const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '1hr' });
+        console.log("Login successful for user:", req.body.username);
+
+        // Return token in response
+        res.json({ token: token });
     } catch (error) {
-        res.status(500).json({error: 'Error logging in'});
+        console.error("Error logging in:", error);
+        res.status(500).json({ error: 'Error logging in' });
     }
-})
+});
 
 //Create Treasure
 app.post("/map", async (req, res) => {
