@@ -21,7 +21,7 @@ export default function Login() {
 
     const fetchUsers = () => {
         axios
-        .get('https://luckwatsa-app-server.vercel.app/users')
+        .get('/users')
         .then((res) =>{
             setUsers(res.data); 
         })
