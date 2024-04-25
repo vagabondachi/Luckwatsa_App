@@ -10,7 +10,7 @@ const Treasure = require('./models/Treasure');
 const jwt = require('jsonwebtoken');
 
 const corsOptions = {
-    origin: "https://luckwatsa-app-server.vercel.app/", 
+    origin: "*", 
     credentials: true, 
     methods: ["GET", "POST", "PUT", "DELETE"]
 };
@@ -36,7 +36,7 @@ mongoose
 
 
 //POST Register
-app.post("https://luckwatsa-app-server.vercel.app/register", async (req, res) => {
+app.post("/register", async (req, res) => {
     try {
         //generate new password
         const salt = await bcrypt.genSalt(10);
@@ -58,7 +58,7 @@ app.post("https://luckwatsa-app-server.vercel.app/register", async (req, res) =>
 });
 
 //Get Registered Users
-app.get('https://luckwatsa-app-server.vercel.app/register', async(req,res)=>{
+app.get('/register', async(req,res)=>{
     try{
         const users = await User.find()
         res.status(200).json(users)
@@ -69,7 +69,7 @@ app.get('https://luckwatsa-app-server.vercel.app/register', async(req,res)=>{
 
 
 //Login
-app.post("https://luckwatsa-app-server.vercel.app/login", async (req, res) => {
+app.post("/login", async (req, res) => {
     try {
     // Find user
     const user = await User.findOne({ username: req.body.username });
@@ -80,7 +80,7 @@ app.post("https://luckwatsa-app-server.vercel.app/login", async (req, res) => {
     }
 
     // isate PassValidword
-    const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
+    const isPasswordValid = bcrypt.compare(req.body.password, user.password);
     
     if (!isPasswordValid) {
         // Password doesn't match
