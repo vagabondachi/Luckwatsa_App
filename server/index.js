@@ -80,7 +80,8 @@ app.post("/login", async (req, res) => {
     }
 
     // isate PassValidword
-    const isPasswordValid = bcrypt.compare(req.body.password, user.password);
+    const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
+
     
     if (!isPasswordValid) {
         // Password doesn't match
