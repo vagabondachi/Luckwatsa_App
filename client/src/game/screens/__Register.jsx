@@ -19,7 +19,7 @@ export default function Register() {
 
     const fetchUsers = () => {
         axios
-        .get('https://luckwatsa.vercel.app/register')
+        .get('https://luckwatsa-app.vercel.app/register')
         .then((res) =>{
             // console.log(res.data)
         })
@@ -28,7 +28,7 @@ export default function Register() {
     const handleRegister = (e) => {
         e.preventDefault();
         axios
-        .post('https://luckwatsa.vercel.app/register', { email, username, password})
+        .post('https://luckwatsa-app.vercel.app/register', { email, username, password})
         .then(() => {
             alert('Registration Successful');
             setEmail('')
