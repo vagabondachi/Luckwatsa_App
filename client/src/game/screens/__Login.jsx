@@ -23,14 +23,14 @@ export default function Login() {
         axios
         .get('https://luckwatsa-app-server.vercel.app/users')
         .then((res) =>{
-            // console.log(res.data)
+            setUsers(res.data); 
         })
     }
 
     const handleLogin = async (e) => {
         e.preventDefault()
         try{
-            const response = await axios.post('https://luckwatsa-app-server.vercel.app/users/login', { username, password } )
+            const response = await axios.post('/login', { username, password } )
             const token = response.data.token
             setUsername('')
             setPassword('')

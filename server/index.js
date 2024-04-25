@@ -58,7 +58,7 @@ app.post("/register", async (req, res) => {
 });
 
 //Get Registered Users
-app.get('/register', async(req,res)=>{
+app.get('/users', async(req,res)=>{
     try{
         const users = await User.find()
         res.status(200).json(users)
