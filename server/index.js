@@ -10,7 +10,7 @@ const Treasure = require('./models/Treasure');
 const jwt = require('jsonwebtoken');
 
 const corsOptions = {
-    origin: "https://luckwatsa.vercel.app", 
+    origin: "https://luckwatsa-app-server.vercel.app/", 
     credentials: true, 
     methods: ["GET", "POST", "PUT", "DELETE"]
 };
