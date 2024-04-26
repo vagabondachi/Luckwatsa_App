@@ -7,10 +7,9 @@ import { faHouse, faToolbox, faRankingStar, faMapLocationDot, faEllipsis, faComp
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-export default function TopHUD() {
+export default function HUD({ showDraftingPanel, setShowDraftingPanel }) {
     // State for showing/hiding modal
     const [showSettingsModal, setShowSettingsModal] = useState(false); 
-    const [showDraftingPanel, setShowDraftingPanel] = useState(false); 
 
     //Handle Open setting modal when clicked
     const handleOpenSettingsModal = () => {
@@ -22,7 +21,10 @@ export default function TopHUD() {
     };
 
     const handleToggleDraftingPanel = () => {
-        setShowDraftingPanel(prevState => !prevState); // Toggle the drafting panel state
+        setShowDraftingPanel(prevState => {
+            console.log('HUD showDraftingPanel changed:', !prevState);
+            return !prevState; // Toggle the drafting panel state
+        });
     };
 
     return (
@@ -69,7 +71,7 @@ export default function TopHUD() {
             </div>
         </nav> 
         {showDraftingPanel ? (
-            <div>Hey</div>
+            <DraftingPath></DraftingPath>
         ) : (
             <nav className="dark:bg-transparent bg-opacity-0 fixed bottom-0 z-20"> 
             <div className="max-w-screen-xl flex flex-wrap mx-auto"> 
