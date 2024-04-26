@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
+import logo from "../../_shared/assets/logo/logo.png";
 export default function Navbar() {
     return (
         <div className="bg-white">
@@ -24,7 +24,7 @@ export default function Navbar() {
                         <Link to="/howitworks" className="text-sm font-semibold leading-6 text-textMain">How It Works</Link>
                     </div>
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <Link to="/game" className="bg-primary text-textwhite px-6 py-2 text-sm font-semibold leading-6 text-textMain font-secondaryRegular">Get Started</Link>
+                        <Link to="/" className="rounded-md bg-primary text-textwhite px-6 py-2 text-sm font-semibold leading-6 text-textMain font-secondaryRegular">Log in</Link>
                     </div>
                 </nav>
             </div>
@@ -35,7 +35,7 @@ export default function Navbar() {
                     <div className="flex items-center justify-between">
                         <a href="#" className="-m-1.5 p-1.5">
                             <span className="sr-only">Lukwatsa</span>
-                            <img src="src/assets/logo/logo.png" alt="logo-luckwatsa" className="h-12 w-auto" />
+                            <img src={logo} alt="logo-luckwatsa" className="h-12 w-auto" />
                         </a>
                         <button className="-m-2.5 rounded-md p-2.5 text-gray-700">
                             <span className="sr-only">Close menu</span>
